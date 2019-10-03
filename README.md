@@ -91,8 +91,6 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 if (yargs.argv.hello) {
   console.log(`Hello ${yargs.argv.hello}`)
 } else {
@@ -117,8 +115,6 @@ edit bin/mycli.js:
 const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
-
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
 
 yargs
   .command('hello [whom]', 'say hello to someone', (yargs) => {
@@ -170,10 +166,8 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 yargs
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .argv
 
@@ -230,10 +224,8 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 yargs
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .help('Halp!')
   .argv
@@ -256,10 +248,8 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 yargs
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .argv
 
@@ -276,8 +266,6 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 const validate = (argv, opts) => {
   if (argv._.length > 0) return true
   throw new Error('Please make sure to specify at least one command')
@@ -285,7 +273,7 @@ const validate = (argv, opts) => {
 
 yargs
   .check(validate)
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .argv
 
@@ -313,8 +301,6 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 const errorHandler = (msg, err, args) => {
   if (msg || err) {
     console.error(msg || err)
@@ -333,7 +319,7 @@ const validate = (argv, opts) => {
 
 yargs
   .check(validate)
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .fail(errorHandler)
   .argv
@@ -362,8 +348,6 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 const errorHandler = (msg, err, args) => {
   if (msg || err) {
     console.error(yargonaut.chalk().red(msg || err))
@@ -387,7 +371,7 @@ yargonaut.style('blue')
 
 yargs
   .check(validate)
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .fail(errorHandler)
   .argv
@@ -411,8 +395,6 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 const errorHandler = (msg, err, args) => {
   if (msg || err) {
     console.error(yargonaut.chalk().red(msg || err))
@@ -430,7 +412,7 @@ yargonaut.style('blue')
   .errorsStyle('red.bold')
 
 yargs
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .demandCommand(1)
   .argv
@@ -462,8 +444,6 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 const errorHandler = (msg, err, args) => {
   if (msg || err) {
     console.error(yargonaut.chalk().red(msg || err))
@@ -485,7 +465,7 @@ yargonaut.style('blue')
   .errorsStyle('red.bold')
 
 yargs
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .demandCommand(1, yargonaut.chalk().red.bold('You need at least one command before moving on'))
   .argv
@@ -505,8 +485,6 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 const errorHandler = (msg, err, args) => {
   if (msg || err) {
     console.error(yargonaut.chalk().red(msg || err))
@@ -528,7 +506,7 @@ yargonaut.style('blue')
   .errorsStyle('red.bold')
 
 yargs
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .demandCommand(1, yargonaut.chalk().red.bold('You need at least one command before moving on'))
   .wrap(100)
@@ -547,8 +525,6 @@ const {exec} = require('shelljs')
 const yargs = require('yargs')
 const yargonaut = require('yargonaut')
 
-const ROOT = exec('npm root', {silent: true}).replace('node_modules', '').trim()
-
 const errorHandler = (msg, err, args) => {
   if (msg || err) {
     console.error(yargonaut.chalk().red(msg || err))
@@ -570,11 +546,10 @@ yargonaut.style('blue')
   .errorsStyle('red.bold')
 
 yargs
-  .config({root: ROOT})
-  .commandDir(`${ROOT}bin/commands/`)
+  .commandDir(`./commands/`)
   .option('verbose', {default: false})
   .demandCommand(1, yargonaut.chalk().red.bold('You need at least one command before moving on'))
-  .version(require(`${ROOT}package.json`).version)
+  .version(require(`../package.json`).version)
   .wrap(100)
   .argv
 
@@ -658,3 +633,4 @@ module.exports = {
   handler: handler,
 }
 ```
+
